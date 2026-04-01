@@ -1,0 +1,17 @@
+<!-- TODO [CONCEPT: Component Composition]
+     Angular apps are built by composing components together.
+     <app-navbar> is a child component used here.
+     <router-outlet> renders the child route component (dashboard or users). -->
+
+<div class="layout">
+  <!-- TODO [CONCEPT: Input binding — passing data to child component via [user]] -->
+  <app-navbar [user]="user"></app-navbar>
+
+  <main class="content">
+    <!-- TODO [CONCEPT: Router Outlet]
+         This is where child route components get rendered.
+         When URL is /home/dashboard -> DashboardComponent renders here
+         When URL is /home/users -> UsersComponent renders here -->
+    <router-outlet></router-outlet>
+  </main>
+</div>

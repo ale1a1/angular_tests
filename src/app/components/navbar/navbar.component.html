@@ -1,0 +1,27 @@
+<nav class="sidebar">
+  <div class="brand">Angular App</div>
+
+  <!-- TODO [CONCEPT: Interpolation {{ }} and safe navigation ?. ] -->
+  <div class="user-profile">
+    <div class="avatar">{{ user?.username?.charAt(0)?.toUpperCase() }}</div>
+    <span>{{ user?.username }}</span>
+    <small>{{ user?.role }}</small>
+  </div>
+
+  <ul class="nav-links">
+    <!-- TODO [CONCEPT: routerLink — Angular's way to navigate (no page reload)]
+         routerLinkActive adds a CSS class when the route is active -->
+    <li>
+      <a routerLink="/home/dashboard" routerLinkActive="active" (click)="onMenuClick('dashboard')">
+        Dashboard
+      </a>
+    </li>
+    <li>
+      <a routerLink="/home/users" routerLinkActive="active" (click)="onMenuClick('users')">
+        Users
+      </a>
+    </li>
+  </ul>
+
+  <button class="logout-btn" (click)="logout()">Logout</button>
+</nav>

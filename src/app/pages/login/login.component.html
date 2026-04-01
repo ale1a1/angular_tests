@@ -1,0 +1,42 @@
+<!-- TODO [CONCEPT: Template + Data Binding] -->
+<!-- This is the component's template (HTML). Angular binds data from the .ts file here. -->
+
+<div class="login-container">
+  <div class="login-card">
+    <h2>Login</h2>
+    <p class="hint">Use <strong>admin / admin</strong></p>
+
+    <!-- TODO [CONCEPT: Reactive Forms binding]
+         [formGroup] = property binding (binds form object from TS)
+         (ngSubmit) = event binding (calls onSubmit() when form submits) -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <div class="field">
+        <label for="username">Username</label>
+        <!-- TODO [CONCEPT: formControlName connects input to FormGroup control] -->
+        <input id="username" formControlName="username" placeholder="Enter username" />
+        <!-- TODO [CONCEPT: Conditional rendering with @if (Angular 17+ control flow)]
+             Also shows: accessing form validation errors -->
+        @if (loginForm.get('username')?.touched && loginForm.get('username')?.errors) {
+          <span class="error">Username is required (min 3 chars)</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" placeholder="Enter password" />
+        @if (loginForm.get('password')?.touched && loginForm.get('password')?.errors) {
+          <span class="error">Password is required (min 3 chars)</span>
+        }
+      </div>
+
+      <!-- TODO [CONCEPT: Property binding — [disabled] binds to form validity] -->
+      <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
+
+      <!-- TODO [CONCEPT: Interpolation — {{ }} displays TS variable in template] -->
+      @if (errorMessage) {
+        <p class="error">{{ errorMessage }}</p>
+      }
+    </form>
+  </div>
+</div>

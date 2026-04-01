@@ -1,0 +1,35 @@
+.users-page {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    h2 { margin: 0; }
+
+    select {
+      padding: 0.4rem 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+
+  h2 { margin: 0 0 0.25rem; }
+  .subtitle { color: #888; font-size: 0.85rem; margin-bottom: 1rem; }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+
+  th, td { padding: 0.6rem 0.75rem; text-align: left; }
+  th { background: #fafafa; font-size: 0.85rem; color: #666; }
+  tr:not(:last-child) td { border-bottom: 1px solid #f0f0f0; }
+}
+
+.avatar { width: 32px; height: 32px; border-radius: 50%; }
+.error { color: #ff4d4f; }

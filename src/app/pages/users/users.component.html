@@ -1,0 +1,48 @@
+<div class="users-page">
+  <div class="header">
+    <h2>Users</h2>
+    <select [(ngModel)]="selectedPeriod" (change)="onPeriodChange($event)" class="period-selector">
+      <option value="7d">Last 7 Days</option>
+      <option value="30d">Last 30 Days</option>
+      <option value="90d">Last 90 Days</option>
+    </select>
+  </div>
+  <p class="subtitle">Data fetched from <code>randomuser.me</code> API</p>
+
+  <!-- TODO [CONCEPT: Conditional rendering with @if (Angular 17+)] -->
+  @if (loading) {
+    <p>Loading users...</p>
+  }
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  @if (!loading && !error) {
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Nationality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- TODO [CONCEPT: @for loop (Angular 17+ replaces *ngFor)]
+             track is required — similar to React's key prop for efficient DOM updates -->
+        @for (user of users; track user.email) {
+          <tr>
+            <!-- TODO [CONCEPT: Property binding — [src] binds to a TS expression] -->
+            <td><img [src]="user.picture" [alt]="user.name" class="avatar" /></td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.nationality }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

@@ -1,0 +1,67 @@
+.sidebar {
+  width: 200px;
+  background: #001529;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #ffffff22;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    background: #1890ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+  }
+
+  span { font-size: 0.9rem; }
+  small { color: #888; font-size: 0.75rem; }
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  flex: 1;
+
+  li a {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    color: #ffffffaa;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 0.25rem;
+    &:hover { background: #ffffff11; color: white; }
+    &.active { background: #1890ff; color: white; } // routerLinkActive adds this
+  }
+}
+
+.logout-btn {
+  margin-top: auto;
+  background: none;
+  border: 1px solid #ff4d4f;
+  color: #ff4d4f;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  &:hover { background: #ff4d4f; color: white; }
+}

@@ -1,0 +1,32 @@
+<div class="dashboard">
+  <div class="header">
+    <h2>Dashboard</h2>
+
+    <!-- TODO [CONCEPT: Two-way binding with NgRx]
+         Here we use event binding (change) to dispatch an action.
+         The selected value comes from the store via Observable. -->
+    <select [value]="selectedPeriod" (change)="onPeriodChange($event)">
+      <option value="7d">Last 7 days</option>
+      <option value="30d">Last 30 days</option>
+      <option value="90d">Last 90 days</option>
+      <option value="1y">Last year</option>
+    </select>
+  </div>
+
+  <!-- TODO [CONCEPT: Async Pipe]
+       The async pipe subscribes to an Observable and auto-unsubscribes.
+       It's the recommended way to display Observable data in templates. -->
+  <p class="period-label">Showing data for: <strong>{{ timePeriod$ | async }}</strong></p>
+
+  <!-- TODO [CONCEPT: Structural Directive @for (Angular 17+ control flow)]
+       Replaces *ngFor. Loops over an array and renders template for each item.
+       'track' is required for performance (like React's key). -->
+  <div class="stats-grid">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-card">
+        <span class="stat-value">{{ stat.value }}</span>
+        <span class="stat-label">{{ stat.label }}</span>
+      </div>
+    }
+  </div>
+</div>

@@ -1,3 +1,6 @@
+// TODO [ITCSS: COMPONENTS - DASHBOARD]
+// Dashboard page styling
+
 .dashboard {
   .header {
     display: flex;
@@ -5,17 +8,29 @@
     align-items: center;
     margin-bottom: 0.5rem;
 
-    h2 { margin: 0; }
+    h2 {
+      margin: 0;
+    }
 
     select {
       padding: 0.4rem 0.6rem;
-      border: 1px solid #ccc;
+      border: 1px solid #d9d9d9;
       border-radius: 4px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: border-color 300ms;
+      width: 150px;
+      max-width: 100%;
+
+      &:focus {
+        outline: none;
+        border-color: #1890ff;
+      }
     }
   }
 
   .period-label {
-    color: #888;
+    color: #666;
     font-size: 0.85rem;
     margin-bottom: 1rem;
   }
@@ -34,7 +49,21 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  transition: box-shadow 300ms;
 
-  .stat-value { font-size: 1.5rem; font-weight: bold; color: #1890ff; }
-  .stat-label { font-size: 0.85rem; color: #666; margin-top: 0.25rem; }
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1890ff;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.25rem;
+  }
 }

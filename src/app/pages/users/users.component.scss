@@ -1,3 +1,6 @@
+// TODO [ITCSS: COMPONENTS - USERS]
+// Users page styling
+
 .users-page {
   .header {
     display: flex;
@@ -5,17 +8,36 @@
     align-items: center;
     margin-bottom: 0.5rem;
 
-    h2 { margin: 0; }
+    h2 {
+      margin: 0;
+    }
 
     select {
       padding: 0.4rem 0.6rem;
-      border: 1px solid #ccc;
+      border: 1px solid #d9d9d9;
       border-radius: 4px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: border-color 300ms;
+      width: 150px;
+      max-width: 100%;
+
+      &:focus {
+        outline: none;
+        border-color: #1890ff;
+      }
     }
   }
 
-  h2 { margin: 0 0 0.25rem; }
-  .subtitle { color: #888; font-size: 0.85rem; margin-bottom: 1rem; }
+  h2 {
+    margin: 0 0 0.25rem;
+  }
+
+  .subtitle {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
 }
 
 table {
@@ -24,12 +46,39 @@ table {
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  margin-top: 1rem;
 
-  th, td { padding: 0.6rem 0.75rem; text-align: left; }
-  th { background: #fafafa; font-size: 0.85rem; color: #666; }
-  tr:not(:last-child) td { border-bottom: 1px solid #f0f0f0; }
+  th,
+  td {
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    border: 0;
+  }
+
+  th {
+    background: #fafafa;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+  }
+
+  tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  tbody tr:hover {
+    background: #f9f9f9;
+  }
 }
 
-.avatar { width: 32px; height: 32px; border-radius: 50%; }
-.error { color: #ff4d4f; }
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.error {
+  color: #ff4d4f;
+}
+

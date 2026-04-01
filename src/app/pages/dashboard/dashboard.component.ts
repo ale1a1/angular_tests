@@ -30,11 +30,15 @@ export class DashboardComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    // TODO [CONCEPT: Selecting state from NgRx store]
+    // TODO [CONCEPT: Using selectors to reactively update stats]
+    // Select the time period from store and map it to stats
+    // Use the async pipe to automatically handle subscriptions
     this.timePeriod$ = this.store.select(selectTimePeriod);
+    
+    // Subscribe to period changes and update stats
+    // Selector will emit the current store value immediately on subscribe
     this.timePeriod$.subscribe(period => {
       this.selectedPeriod = period;
-      // Update stats based on the selected period
       this.stats = this.getStatsByPeriod(period);
     });
   }
@@ -66,8 +70,8 @@ export class DashboardComponent implements OnInit {
   }
 
   // TODO [CONCEPT: Dispatching NgRx Actions]
-  // When user changes dropdown, we dispatch an action to update the store.
-  // The reducer handles the state change. Components read updated state via selectors.
+  // When user changes dropdown, dispatch an action to update the store.
+  // The subscription in ngOnInit will react to the store change automatically.
   onPeriodChange(event: Event): void {
     const period = (event.target as HTMLSelectElement).value;
     this.store.dispatch(setTimePeriod({ period }));

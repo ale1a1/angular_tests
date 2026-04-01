@@ -1,10 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Subscription, switchMap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { UsersService, User } from '../../services/users.service';
-import { selectTimePeriod } from '../../store/filters.selectors';
 import { setTimePeriod } from '../../store/filters.actions';
 
 @Component({
@@ -17,64 +16,53 @@ import { setTimePeriod } from '../../store/filters.actions';
 export class UsersComponent implements OnInit, OnDestroy {
 
   users: User[] = [];
-  loading = true;
+  loading = false;
   error = '';
   selectedPeriod = '7d';
 
-  // TODO [CONCEPT: Subscription management]
-  // When you subscribe manually, you MUST unsubscribe to prevent memory leaks.
-  // We store the subscription and call unsubscribe() in ngOnDestroy.
-  // Alternative: use the async pipe in the template (auto-unsubscribes).
-  private usersSub!: Subscription;
+  private usersSub?: Subscription;
 
-  constructor(private usersService: UsersService, private store: Store) {} // DI
+  constructor(
+    private usersService: UsersService, 
+    private store: Store,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-  // TODO [CONCEPT: Lifecycle Hook — ngOnInit]
-  // Called once after component is created. Best place to fetch initial data.
   ngOnInit(): void {
-    // Subscribe to time period changes and reload users whenever period changes
-    this.usersSub = this.store.select(selectTimePeriod)
-      .pipe(
-        switchMap(period => {
-          this.selectedPeriod = period;
-          this.loading = true;
-          // Fetch different number of users based on period for demo purposes
-          const userCount = this.getUserCountByPeriod(period);
-          return this.usersService.getUsers(userCount);
-        })
-      )
-      .subscribe({
-        next: (data) => {
-          this.users = data;
-          this.loading = false;
-        },
-        error: (err) => {
-          this.error = 'Failed to load users';
-          this.loading = false;
-          console.error(err);
-        }
-      });
+    // Load initial data immediately
+    this.loadUsers(this.selectedPeriod);
   }
 
-  // Helper method to return different number of users based on time period
+  private loadUsers(period: string): void {
+    this.loading = true;
+    this.error = '';
+    
+    const userCount = this.getUserCountByPeriod(period);
+    this.usersSub = this.usersService.getUsers(userCount).subscribe({
+      next: (data) => {
+        this.users = data;
+        this.loading = false;
+        this.cdr.markForCheck(); // Trigger change detection
+      },
+      error: (err) => {
+        this.error = 'Failed to load users';
+        this.loading = false;
+        this.cdr.markForCheck(); // Trigger change detection
+        console.error(err);
+      }
+    });
+  }
+
   private getUserCountByPeriod(period: string): number {
-    const countByPeriod: { [key: string]: number } = {
-      '7d': 8,
-      '30d': 15,
-      '90d': 25,
-    };
-    return countByPeriod[period] || 8;
+    return { '7d': 8, '30d': 15, '90d': 25 }[period] || 8;
   }
 
-  // TODO [CONCEPT: Dispatching NgRx Actions]
-  // When user changes dropdown, dispatch action to update store
   onPeriodChange(event: Event): void {
     const period = (event.target as HTMLSelectElement).value;
+    this.loadUsers(period);
     this.store.dispatch(setTimePeriod({ period }));
   }
 
-  // TODO [CONCEPT: Lifecycle Hook — ngOnDestroy]
-  // Called when component is removed from the DOM. Clean up here.
   ngOnDestroy(): void {
     this.usersSub?.unsubscribe();
   }

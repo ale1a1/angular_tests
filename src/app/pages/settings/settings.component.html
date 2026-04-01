@@ -1,0 +1,117 @@
+<div class="settings-page">
+  <h2>Settings</h2>
+  <p class="subtitle">Update your profile information</p>
+
+  <!-- TODO [CONCEPT: Success Message Display] -->
+  @if (successMessage) {
+    <div class="success-message">{{ successMessage }}</div>
+  }
+
+  <!-- TODO [CONCEPT: Reactive Form Binding]
+       [formGroup]="form" binds the FormGroup to the form element
+       formControlName="fieldName" binds individual form controls
+  -->
+  <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()" class="settings-form">
+    
+    <!-- Display Name Field -->
+    <div class="form-group">
+      <label for="displayName">Display Name</label>
+      <input
+        id="displayName"
+        type="text"
+        formControlName="displayName"
+        class="form-control"
+        [class.is-invalid]="isFieldInvalid('displayName')"
+        placeholder="Enter your display name"
+      />
+      
+      <!-- TODO [CONCEPT: Form Validation Messages]
+           Show errors based on validator type (required, minLength, etc.)
+      -->
+      @if (isFieldInvalid('displayName')) {
+        <div class="error-message">
+          @if (displayName?.errors?.['required']) {
+            Display name is required
+          }
+          @if (displayName?.errors?.['minLength']) {
+            Display name must be at least 3 characters
+          }
+          @if (displayName?.errors?.['maxLength']) {
+            Display name cannot exceed 50 characters
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="form-control"
+        [class.is-invalid]="isFieldInvalid('email')"
+        placeholder="Enter your email"
+      />
+      
+      @if (isFieldInvalid('email')) {
+        <div class="error-message">
+          @if (email?.errors?.['required']) {
+            Email is required
+          }
+          @if (email?.errors?.['email']) {
+            Please enter a valid email address
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Phone Number Field -->
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input
+        id="phone"
+        type="tel"
+        formControlName="phone"
+        class="form-control"
+        [class.is-invalid]="isFieldInvalid('phone')"
+        placeholder="Enter your phone number"
+      />
+      
+      @if (isFieldInvalid('phone')) {
+        <div class="error-message">
+          @if (phone?.errors?.['pattern']) {
+            Please enter a valid phone number
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <!-- TODO [CONCEPT: Button Disabled When Form Invalid]
+           [disabled]="form.invalid" prevents submission of invalid forms
+      -->
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="settingsForm.invalid"
+      >
+        Save Changes
+      </button>
+      
+      <!-- TODO [CONCEPT: Form Reset]
+           (click)="resetForm()" clears form without submitting
+      -->
+      <button
+        type="button"
+        class="btn-secondary"
+        (click)="settingsForm.reset()"
+        [disabled]="!isFormDirty()"
+      >
+        Reset
+      </button>
+    </div>
+  </form>
+</div>

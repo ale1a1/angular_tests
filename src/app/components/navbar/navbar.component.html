@@ -21,6 +21,11 @@
         Users
       </a>
     </li>
+    <li>
+      <a routerLink="/home/settings" routerLinkActive="active" (click)="onMenuClick('settings')">
+        Settings
+      </a>
+    </li>
   </ul>
 
   <button class="logout-btn" (click)="logout()">Logout</button>

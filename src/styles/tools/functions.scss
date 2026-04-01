@@ -1,0 +1,40 @@
+// TODO [ITCSS: TOOLS - FUNCTIONS]
+// Reusable SCSS functions
+// This layer produces NO CSS output — only @function definitions
+
+// ============================================================
+// COLOR FUNCTIONS
+// ============================================================
+// TODO [COLOR MANIPULATION]
+// Helper functions for color adjustments
+
+// Lighten a color by percentage
+@function tint($color, $percent) {
+  @return mix(white, $color, $percent);
+}
+
+// Darken a color by percentage
+@function shade($color, $percent) {
+  @return mix(black, $color, $percent);
+}
+
+// ============================================================
+// SIZING FUNCTIONS
+// ============================================================
+// TODO [PX TO REM CONVERSION]
+// Convert pixel values to rem units
+// Assumes 16px root font size
+
+@function rem($pixels) {
+  @return $pixels / 16 * 1rem;
+}
+
+// ============================================================
+// SPACING MULTIPLIER
+// ============================================================
+// TODO [RESPONSIVE SPACING]
+// Multiply base spacing unit
+
+@function spaces($multiplier) {
+  @return $spacing-md * $multiplier;
+}

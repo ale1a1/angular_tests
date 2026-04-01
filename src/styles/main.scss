@@ -1,0 +1,108 @@
+// TODO [ITCSS ARCHITECTURE - MAIN ENTRY POINT]
+// Inverted Triangle CSS - Import all layers in correct order
+// Each layer increases in specificity as you go down
+// Nothing specific to any component here — orchestration only
+
+// ============================================================
+// LAYER 1: SETTINGS
+// ============================================================
+// TODO [SETTINGS LAYER]
+// Variables, configuration, no CSS output
+// Must come first — all other layers depend on these
+
+@import 'settings/variables';
+@import 'settings/breakpoints';
+@import 'settings/z-indexes';
+
+// ============================================================
+// LAYER 2: TOOLS
+// ============================================================
+// TODO [TOOLS LAYER]
+// Mixins, functions, no CSS output
+// Can now use variables from settings
+
+@import 'tools/mixins';
+@import 'tools/functions';
+
+// ============================================================
+// LAYER 3: GENERIC
+// ============================================================
+// TODO [GENERIC LAYER]
+// Browser resets, normalize, box-sizing
+// Very wide reach — affects many elements
+// Produces minimal CSS output
+
+@import 'generic/reset';
+@import 'generic/box-sizing';
+
+// ============================================================
+// LAYER 4: ELEMENTS
+// ============================================================
+// TODO [ELEMENTS LAYER]
+// Bare HTML element styling (no classes)
+// h1-h6, p, button, input, etc
+// Last layer where unclassed elements are styled
+
+@import 'elements/typography';
+@import 'elements/forms';
+
+// ============================================================
+// LAYER 5: OBJECTS
+// ============================================================
+// TODO [OBJECTS LAYER]
+// Layout patterns and structural components
+// Use class names: .o-container, .o-grid, .o-flex
+// Design-agnostic, reusable building blocks
+
+@import 'objects/layout';
+@import 'objects/grid';
+
+// ============================================================
+// LAYER 6: COMPONENTS
+// ============================================================
+// TODO [COMPONENTS LAYER]
+// Specific, decorated UI components
+// Use class names: .c-btn, .c-card, .c-navbar
+// Can also live alongside component files (*.component.scss)
+
+@import 'components/buttons';
+@import 'components/cards';
+
+// ============================================================
+// LAYER 7: TRUMPS
+// ============================================================
+// TODO [TRUMPS LAYER]
+// Overrides and utilities with HIGHEST SPECIFICITY
+// Use !important here (it's expected)
+// Use sparingly — exceptions only
+
+@import 'trumps/utilities';
+@import 'trumps/overrides';
+
+// ============================================================
+// ITCSS BENEFITS
+// ============================================================
+// TODO [ITCSS ADVANTAGES]
+// 1. Specificity is managed — increases down the triangle
+// 2. Easy to find where styles are defined
+// 3. Reduces CSS conflicts and debugging
+// 4. Scalable — add layers without breaking others
+// 5. Maintainable — clear separation of concerns
+// 6. Predictable — order matters, applies consistently
+
+// ============================================================
+// USAGE GUIDELINES
+// ============================================================
+// TODO [BEST PRACTICES]
+//
+// DO:
+// ✓ Keep settings pure (no CSS output)
+// ✓ Use semantic naming (.c-button, .o-grid, .u-hidden)
+// ✓ Keep specificity low in early layers
+// ✓ Use utilities for exceptions only
+//
+// DON'T:
+// ✗ Put component styles in wrong layers
+// ✗ Add new specificity where it doesn't belong
+// ✗ Use !important outside trumps layer
+// ✗ Import in wrong order

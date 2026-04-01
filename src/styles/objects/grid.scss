@@ -1,0 +1,61 @@
+// TODO [ITCSS: OBJECTS - GRID]
+// Grid system and responsive utilities
+// Non-decorated layout patterns
+
+@import '../settings/variables';
+@import '../settings/breakpoints';
+@import '../tools/mixins';
+
+// ============================================================
+// RESPONSIVE GRID
+// ============================================================
+// TODO [RESPONSIVE GRID SYSTEM]
+// 12-column grid system with breakpoints
+// Usage: 
+// <div class="o-row">
+//   <div class="o-col o-col-md-6">...</div>
+//   <div class="o-col o-col-md-6">...</div>
+// </div>
+
+.o-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(#{$spacing-md} * -1);
+}
+
+.o-col {
+  flex: 0 0 100%;
+  padding: $spacing-md;
+}
+
+// Column widths
+@for $i from 1 through 12 {
+  .o-col-#{$i} {
+    flex: 0 0 percentage($i / 12);
+  }
+}
+
+// Responsive columns
+@include mq($breakpoint-md) {
+  @for $i from 1 through 12 {
+    .o-col-md-#{$i} {
+      flex: 0 0 percentage($i / 12);
+    }
+  }
+}
+
+@include mq($breakpoint-lg) {
+  @for $i from 1 through 12 {
+    .o-col-lg-#{$i} {
+      flex: 0 0 percentage($i / 12);
+    }
+  }
+}
+
+@include mq($breakpoint-xl) {
+  @for $i from 1 through 12 {
+    .o-col-xl-#{$i} {
+      flex: 0 0 percentage($i / 12);
+    }
+  }
+}

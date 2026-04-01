@@ -1,0 +1,144 @@
+// TODO [ITCSS: ELEMENTS - TYPOGRAPHY]
+// Bare HTML element styling
+// No classes — only element selectors
+// Includes h1-h6, p, strong, em, etc
+
+@import '../settings/variables';
+
+// ============================================================
+// HEADINGS
+// ============================================================
+// TODO [HEADING SCALE]
+// Semantic heading hierarchy with consistent sizing
+// These establish baseline typography, not component styling
+
+h1 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-lg;
+}
+
+h2 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-md;
+}
+
+h3 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-md;
+}
+
+h4 {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-sm;
+}
+
+h5,
+h6 {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-sm;
+}
+
+// ============================================================
+// PARAGRAPH
+// ============================================================
+p {
+  margin-bottom: $spacing-md;
+  line-height: $line-height-normal;
+}
+
+// ============================================================
+// STRONG & EMPHASIS
+// ============================================================
+strong,
+b {
+  font-weight: $font-weight-bold;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+// ============================================================
+// SMALL TEXT
+// ============================================================
+small {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+// ============================================================
+// CODE
+// ============================================================
+code,
+kbd,
+pre {
+  font-family: 'Courier New', monospace;
+  background-color: $color-gray-0;
+  border-radius: $border-radius-md;
+  padding: $spacing-xs $spacing-sm;
+}
+
+pre {
+  padding: $spacing-md;
+  overflow-x: auto;
+  line-height: $line-height-normal;
+}
+
+// ============================================================
+// LISTS
+// ============================================================
+// TODO [LIST STYLING]
+// Restore list markers for semantic lists
+
+ul {
+  list-style: disc;
+  margin-left: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+ol {
+  list-style: decimal;
+  margin-left: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+li {
+  margin-bottom: $spacing-xs;
+}
+
+// ============================================================
+// BLOCKQUOTE
+// ============================================================
+blockquote {
+  margin: $spacing-md 0;
+  padding-left: $spacing-lg;
+  border-left: 4px solid $color-border;
+  color: $color-text-secondary;
+  font-style: italic;
+}
+
+// ============================================================
+// HORIZONTAL RULE
+// ============================================================
+hr {
+  margin: $spacing-lg 0;
+  border: none;
+  border-top: 1px solid $color-border;
+}
+
+// ============================================================
+// ABBREVIATION
+// ============================================================
+abbr[title] {
+  border-bottom: 1px dotted $color-border;
+  cursor: help;
+}

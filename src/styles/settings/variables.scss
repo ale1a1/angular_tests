@@ -1,0 +1,121 @@
+// TODO [ITCSS: SETTINGS - VARIABLES]
+// Design tokens and configuration variables
+// This layer produces NO CSS output — only variables
+// Used throughout the project for consistency
+
+// ============================================================
+// COLOR PALETTE
+// ============================================================
+// TODO [DESIGN TOKENS]
+// Define semantic color names, not descriptive ones
+// Bad: $blue, $red  |  Good: $color-primary, $color-danger
+// This makes rebranding easy — change one variable, update everywhere
+
+$color-primary: #1890ff;
+$color-primary-dark: #0050b3;
+$color-primary-light: #69c0ff;
+
+$color-danger: #ff4d4f;
+$color-danger-dark: #ff7875;
+$color-danger-light: #ffccc7;
+
+$color-success: #52c41a;
+$color-success-dark: #389e0d;
+
+$color-warning: #faad14;
+
+// Neutrals
+$color-white: #ffffff;
+$color-black: #000000;
+$color-gray-0: #fafafa;
+$color-gray-1: #f5f5f5;
+$color-gray-2: #ececec;
+$color-gray-3: #d9d9d9;
+$color-gray-4: #bfbfbf;
+$color-gray-5: #8c8c8c;
+$color-gray-6: #595959;
+
+$color-text-primary: #333333;
+$color-text-secondary: #666666;
+$color-text-disabled: #999999;
+
+$color-background: #ffffff;
+$color-border: $color-gray-3;
+
+// ============================================================
+// SPACING SCALE
+// ============================================================
+// TODO [SPACING SCALE]
+// Use a consistent spacing scale based on 4px base unit
+// Benefits:
+// - Vertical rhythm harmony
+// - Easier responsive scaling
+// - Reduced decisions when building UI
+
+$spacing-xs: 0.25rem;   // 4px
+$spacing-sm: 0.5rem;    // 8px
+$spacing-md: 1rem;      // 16px
+$spacing-lg: 1.5rem;    // 24px
+$spacing-xl: 2rem;      // 32px
+$spacing-xxl: 3rem;     // 48px
+
+// ============================================================
+// TYPOGRAPHY
+// ============================================================
+// TODO [TYPOGRAPHY SCALE]
+// Define font sizing in a modular scale
+// Use rem units for accessibility and responsiveness
+
+$font-size-xs: 0.75rem;   // 12px
+$font-size-sm: 0.875rem;  // 14px
+$font-size-base: 1rem;    // 16px
+$font-size-lg: 1.125rem;  // 18px
+$font-size-xl: 1.25rem;   // 20px
+$font-size-2xl: 1.5rem;   // 24px
+$font-size-3xl: 1.875rem; // 30px
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// ============================================================
+// BORDER RADIUS
+// ============================================================
+// TODO [RADIUS SCALE]
+// Consistent border radius for UI components
+
+$border-radius-sm: 2px;
+$border-radius-md: 4px;
+$border-radius-lg: 8px;
+$border-radius-xl: 16px;
+$border-radius-full: 9999px;
+
+// ============================================================
+// SHADOWS
+// ============================================================
+// TODO [SHADOW ELEVATION SYSTEM]
+// Define depth layers with shadow progression
+// Use for cards, modals, tooltips (elevation hierarchy)
+
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 1px 4px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+$shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+
+// ============================================================
+// TRANSITIONS
+// ============================================================
+// TODO [MOTION CONSISTENCY]
+// Unified animation timing for smooth UX
+// Improves perceived performance
+
+$transition-duration-fast: 150ms;
+$transition-duration-base: 300ms;
+$transition-duration-slow: 500ms;
+
+$transition-timing: cubic-bezier(0.4, 0, 0.2, 1);

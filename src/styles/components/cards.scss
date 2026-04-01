@@ -1,0 +1,116 @@
+// TODO [ITCSS: COMPONENTS - CARDS]
+// Card component styling
+// Use class name: .c-card
+
+@import '../settings/variables';
+@import '../tools/mixins';
+
+// ============================================================
+// CARD COMPONENT
+// ============================================================
+// TODO [CARD OBJECT]
+// Container for grouped content
+// Usage: <div class="c-card"><div class="c-card__body">...</div></div>
+
+.c-card {
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  @include transition(box-shadow);
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+}
+
+// ============================================================
+// CARD SECTIONS
+// ============================================================
+// TODO [CARD ELEMENTS]
+// Header, body, footer sections
+
+.c-card__header {
+  padding: $spacing-lg;
+  border-bottom: 1px solid $color-border;
+  background-color: $color-gray-0;
+}
+
+.c-card__body {
+  padding: $spacing-lg;
+}
+
+.c-card__footer {
+  padding: $spacing-lg;
+  border-top: 1px solid $color-border;
+  background-color: $color-gray-0;
+}
+
+// ============================================================
+// CARD TITLE
+// ============================================================
+.c-card__title {
+  margin: 0;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+// ============================================================
+// CARD SUBTITLE
+// ============================================================
+.c-card__subtitle {
+  margin: $spacing-xs 0 0;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+// ============================================================
+// CARD VARIATIONS
+// ============================================================
+// TODO [CARD MODIFIERS]
+// Elevated, flat, outlined variants
+
+.c-card--elevated {
+  box-shadow: $shadow-lg;
+
+  &:hover {
+    box-shadow: $shadow-xl;
+  }
+}
+
+.c-card--flat {
+  border: none;
+  box-shadow: none;
+  background-color: $color-gray-0;
+}
+
+.c-card--outlined {
+  box-shadow: none;
+  border: 2px solid $color-border;
+}
+
+// ============================================================
+// CARD IMAGE
+// ============================================================
+// TODO [CARD WITH IMAGE]
+// Image as card header
+
+.c-card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+// ============================================================
+// CARD WITH ACTIONS
+// ============================================================
+.c-card__actions {
+  display: flex;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  border-top: 1px solid $color-border;
+  background-color: $color-gray-0;
+}

@@ -1,0 +1,94 @@
+// TODO [ITCSS: GENERIC - RESET]
+// Browser reset and normalization
+// Very wide reach — affects all elements
+// Minimal CSS output
+
+@import '../settings/variables';
+
+// ============================================================
+// UNIVERSAL RESET
+// ============================================================
+// TODO [RESET STRATEGY]
+// Remove default margins/padding from all elements
+// This ensures predictable spacing from the start
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// ============================================================
+// ROOT SIZING
+// ============================================================
+html {
+  font-size: 16px; // Base unit for rem calculations
+}
+
+// ============================================================
+// BODY DEFAULTS
+// ============================================================
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  background-color: $color-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ============================================================
+// LIST RESET
+// ============================================================
+// TODO [LIST NORMALIZATION]
+// Remove default list styling
+
+ul,
+ol {
+  list-style: none;
+}
+
+// ============================================================
+// LINK RESET
+// ============================================================
+// TODO [LINK DEFAULTS]
+// Remove default link styling (component layer adds it back)
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// ============================================================
+// FORM ELEMENTS
+// ============================================================
+// TODO [FORM RESETS]
+// Normalize form element appearance
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+// ============================================================
+// IMAGE
+// ============================================================
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

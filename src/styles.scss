@@ -1,2 +1,6 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+// TODO [MAIN STYLESHEET ENTRY POINT]
+// Import the complete ITCSS architecture
+// All styling is organized into layers in styles/main.scss
+
+@import 'styles/main';
+

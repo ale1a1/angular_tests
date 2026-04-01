@@ -1,0 +1,28 @@
+// TODO [ITCSS: SETTINGS - BREAKPOINTS]
+// Responsive design breakpoints
+// No CSS output — only configuration
+
+// ============================================================
+// MEDIA QUERY BREAKPOINTS
+// ============================================================
+// TODO [MOBILE-FIRST APPROACH]
+// Define breakpoints from mobile → tablet → desktop
+// Use min-width in media queries (progressive enhancement)
+
+$breakpoint-sm: 576px;  // Extra small devices
+$breakpoint-md: 768px;  // Small devices (tablets)
+$breakpoint-lg: 992px;  // Medium devices (desktops)
+$breakpoint-xl: 1200px; // Large devices
+$breakpoint-xxl: 1400px; // Extra large devices
+
+// ============================================================
+// CONTAINER SIZES
+// ============================================================
+// TODO [CONTAINER QUERIES]
+// Max widths for layout containers
+
+$container-sm: 540px;
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 1140px;
+$container-xxl: 1320px;

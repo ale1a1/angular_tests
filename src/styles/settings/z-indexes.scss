@@ -1,0 +1,22 @@
+// TODO [ITCSS: SETTINGS - Z-INDEXES]
+// Centralized z-index management
+// No CSS output — only safe z-index values
+// Prevents stacking context chaos
+
+// ============================================================
+// Z-INDEX SCALE
+// ============================================================
+// TODO [Z-INDEX MANAGEMENT]
+// Define semantic z-index values instead of magic numbers
+// Keep gaps for future elements without reordering
+// Rule: Use the lowest sufficient value
+
+$z-index-base: 0;
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;      // Sticky headers
+$z-index-fixed: 1030;       // Fixed elements
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-notification: 1080;

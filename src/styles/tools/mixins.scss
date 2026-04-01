@@ -1,0 +1,154 @@
+// TODO [ITCSS: TOOLS - MIXINS]
+// Reusable SCSS mixins and utility functions
+// This layer produces NO CSS output — only @mixin definitions
+// Import settings first to use variables
+
+@import '../settings/breakpoints';
+@import '../settings/z-indexes';
+
+// ============================================================
+// RESPONSIVE DESIGN MIXINS
+// ============================================================
+// TODO [RESPONSIVE MIXINS]
+// Abstract media query syntax into semantic mixins
+// Usage: @include mq($breakpoint-md) { ... }
+
+@mixin mq($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// ============================================================
+// TRUNCATION MIXIN
+// ============================================================
+// TODO [TEXT TRUNCATION]
+// Single line text truncation with ellipsis
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ============================================================
+// CLAMP TEXT LINES
+// ============================================================
+// TODO [MULTI-LINE TRUNCATION]
+// Truncate text to N lines with ellipsis
+// Usage: @include clamp-lines(2);
+
+@mixin clamp-lines($lines: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// ============================================================
+// FLEXBOX CENTER
+// ============================================================
+// TODO [FLEX CENTERING]
+// Common pattern: center content both axes
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ============================================================
+// ASPECT RATIO BOX
+// ============================================================
+// TODO [ASPECT RATIO CONTAINER]
+// Maintain aspect ratio (useful for images, videos)
+// Usage: @include aspect-ratio(16, 9);
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  padding-bottom: ($height / $width) * 100%;
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// ============================================================
+// SMOOTH TRANSITIONS
+// ============================================================
+// TODO [ANIMATION HELPERS]
+// Abstract transition timing into reusable mixins
+
+@mixin transition($properties: all) {
+  transition: $properties $transition-duration-base $transition-timing;
+}
+
+@mixin transition-fast($properties: all) {
+  transition: $properties $transition-duration-fast $transition-timing;
+}
+
+@mixin transition-slow($properties: all) {
+  transition: $properties $transition-duration-slow $transition-timing;
+}
+
+// ============================================================
+// FOCUS STATES
+// ============================================================
+// TODO [ACCESSIBILITY]
+// Consistent focus ring styling for keyboard navigation
+
+@mixin focus-ring($color: #1890ff, $offset: 2px) {
+  outline: none;
+  box-shadow: 0 0 0 $offset $color;
+}
+
+// ============================================================
+// CLEARFIX
+// ============================================================
+// TODO [LEGACY SUPPORT]
+// Fix collapsed margins with floated elements
+// (Less needed with Flexbox, but kept for compatibility)
+
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// ============================================================
+// ABSOLUTE CENTER
+// ============================================================
+// TODO [CENTERING POSITIONING]
+// Absolute positioned element centered both axes
+// Works with known/unknown dimensions
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ============================================================
+// VISUALLY HIDDEN (A11Y)
+// ============================================================
+// TODO [SCREEN READER ONLY]
+// Hide from view but keep accessible to screen readers
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

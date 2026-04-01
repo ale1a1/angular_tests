@@ -1,0 +1,149 @@
+// TODO [ITCSS: COMPONENTS - BUTTONS]
+// Specific, decorated button component styles
+// Use class names like .c-btn, .c-btn--primary
+// Use BEM naming convention (Block Element Modifier)
+
+@import '../settings/variables';
+@import '../tools/mixins';
+
+// ============================================================
+// BUTTON COMPONENT
+// ============================================================
+// TODO [BEM NAMING]
+// Block: .c-btn
+// Modifier: .c-btn--primary, .c-btn--danger
+// Usage: <button class="c-btn c-btn--primary">Save</button>
+
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  @include transition(all);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+    @include focus-ring;
+  }
+}
+
+// ============================================================
+// BUTTON VARIANTS
+// ============================================================
+// TODO [BUTTON MODIFIERS]
+// Primary, secondary, danger variants
+
+.c-btn--primary {
+  background-color: $color-primary;
+  color: $color-white;
+
+  &:hover:not(:disabled) {
+    background-color: $color-primary-dark;
+  }
+
+  &:active:not(:disabled) {
+    background-color: shade($color-primary, 20%);
+  }
+}
+
+.c-btn--secondary {
+  background-color: $color-gray-0;
+  color: $color-text-primary;
+  border: 1px solid $color-border;
+
+  &:hover:not(:disabled) {
+    background-color: $color-gray-1;
+  }
+
+  &:active:not(:disabled) {
+    background-color: $color-gray-2;
+  }
+}
+
+.c-btn--danger {
+  background-color: $color-danger;
+  color: $color-white;
+
+  &:hover:not(:disabled) {
+    background-color: shade($color-danger, 15%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: shade($color-danger, 25%);
+  }
+}
+
+.c-btn--success {
+  background-color: $color-success;
+  color: $color-white;
+
+  &:hover:not(:disabled) {
+    background-color: $color-success-dark;
+  }
+}
+
+// ============================================================
+// BUTTON SIZES
+// ============================================================
+// TODO [SIZE MODIFIERS]
+// Small, medium (default), large buttons
+
+.c-btn--sm {
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-sm;
+}
+
+.c-btn--lg {
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-lg;
+}
+
+// ============================================================
+// BUTTON STATES
+// ============================================================
+// TODO [BUTTON MODIFIERS]
+// Full width, loading states
+
+.c-btn--full {
+  width: 100%;
+}
+
+.c-btn--outline {
+  background-color: transparent;
+  border: 2px solid $color-primary;
+  color: $color-primary;
+
+  &:hover:not(:disabled) {
+    background-color: rgba(24, 144, 255, 0.1);
+  }
+}
+
+// ============================================================
+// BUTTON WITH ICON
+// ============================================================
+// TODO [BUTTON WITH ICON]
+// Support for icons next to text
+
+.c-btn__icon {
+  margin-right: $spacing-xs;
+
+  &:last-child {
+    margin-right: 0;
+    margin-left: $spacing-xs;
+  }
+}

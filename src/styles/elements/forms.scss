@@ -1,0 +1,143 @@
+// TODO [ITCSS: ELEMENTS - FORMS]
+// Bare form element styling
+// No classes — only element selectors
+// Component layer adds specific styling later
+
+@import '../settings/variables';
+@import '../tools/mixins';
+
+// ============================================================
+// INPUT ELEMENTS
+// ============================================================
+// TODO [FORM ELEMENT DEFAULTS]
+// Consistent styling for inputs across browsers
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='search'],
+input[type='url'],
+input[type='tel'],
+input[type='number'],
+input[type='date'],
+input[type='time'],
+textarea,
+select {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-md;
+  @include transition(border-color);
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.1);
+  }
+
+  &:disabled {
+    background-color: $color-gray-0;
+    color: $color-text-disabled;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &::placeholder {
+    color: $color-text-disabled;
+  }
+}
+
+// ============================================================
+// TEXTAREA
+// ============================================================
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+// ============================================================
+// SELECT
+// ============================================================
+select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDFMNiA2TDExIDEiIHN0cm9rZT0iIzMzMzMzMyIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+  background-repeat: no-repeat;
+  background-position: right $spacing-md center;
+  background-size: 12px;
+  padding-right: $spacing-xl;
+  cursor: pointer;
+}
+
+// ============================================================
+// CHECKBOX & RADIO
+// ============================================================
+input[type='checkbox'],
+input[type='radio'] {
+  width: auto;
+  margin-right: $spacing-sm;
+  cursor: pointer;
+}
+
+// ============================================================
+// BUTTON
+// ============================================================
+button {
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  background-color: $color-gray-0;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  @include transition(all);
+
+  &:hover {
+    background-color: $color-gray-1;
+    border-color: $color-text-secondary;
+  }
+
+  &:active {
+    background-color: $color-gray-2;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+    @include focus-ring;
+  }
+}
+
+// ============================================================
+// LABEL
+// ============================================================
+label {
+  display: inline-block;
+  margin-bottom: $spacing-xs;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+}
+
+// ============================================================
+// FIELDSET & LEGEND
+// ============================================================
+fieldset {
+  padding: $spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-md;
+  margin-bottom: $spacing-md;
+}
+
+legend {
+  padding: 0 $spacing-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}

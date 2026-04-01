@@ -1,0 +1,170 @@
+// TODO [ITCSS: OBJECTS - LAYOUT]
+// Layout patterns and structural components
+// Use class names like .o-layout, .o-container
+// Non-decorated design patterns (reusable building blocks)
+
+@import '../settings/variables';
+@import '../settings/breakpoints';
+@import '../tools/mixins';
+
+// ============================================================
+// CONTAINER / MAX-WIDTH WRAPPER
+// ============================================================
+// TODO [CONTAINER OBJECT]
+// Constrains content to max-width, centers horizontally
+// Usage: <div class="o-container">
+
+.o-container {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+
+  @include mq($breakpoint-lg) {
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+}
+
+// ============================================================
+// FLEX LAYOUT
+// ============================================================
+// TODO [FLEX UTILITIES]
+// Flexible layout patterns
+
+.o-flex {
+  display: flex;
+}
+
+.o-flex-center {
+  @include flex-center;
+}
+
+.o-flex-col {
+  flex-direction: column;
+}
+
+.o-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.o-flex-gap-sm {
+  gap: $spacing-sm;
+}
+
+.o-flex-gap-md {
+  gap: $spacing-md;
+}
+
+.o-flex-gap-lg {
+  gap: $spacing-lg;
+}
+
+// ============================================================
+// GRID LAYOUT
+// ============================================================
+// TODO [CSS GRID]
+// Modern grid patterns for complex layouts
+
+.o-grid {
+  display: grid;
+  gap: $spacing-md;
+}
+
+.o-grid-2 {
+  @extend .o-grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include mq($breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq($breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.o-grid-3 {
+  @extend .o-grid;
+  grid-template-columns: 1fr;
+
+  @include mq($breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq($breakpoint-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.o-grid-4 {
+  @extend .o-grid;
+  grid-template-columns: 1fr;
+
+  @include mq($breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq($breakpoint-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mq($breakpoint-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// ============================================================
+// STACK
+// ============================================================
+// TODO [VERTICAL STACK OBJECT]
+// Consistent vertical spacing between items
+
+.o-stack {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.o-stack-sm {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.o-stack-lg {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+// ============================================================
+// MEDIA OBJECT
+// ============================================================
+// TODO [MEDIA OBJECT PATTERN]
+// Image on left, text on right (or vice versa)
+// Usage: <div class="o-media"><img/><div class="o-media__body"></div></div>
+
+.o-media {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+}
+
+.o-media__body {
+  flex: 1;
+  min-width: 0; // Prevents text overflow
+}
+
+// ============================================================
+// CLEARFIX
+// ============================================================
+// TODO [CLEARFIX - LEGACY]
+// For layouts using floats (not recommended, but supported)
+
+.o-clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}

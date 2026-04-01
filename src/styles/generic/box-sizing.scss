@@ -1,0 +1,16 @@
+// TODO [ITCSS: GENERIC - BOX-SIZING]
+// Border-box model for all elements
+// Makes sizing more predictable
+
+// ============================================================
+// BOX-SIZING MODEL
+// ============================================================
+// TODO [BOX SIZING STRATEGY]
+// Include padding and border in width/height calculations
+// Makes layouts much predictable than content-box
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

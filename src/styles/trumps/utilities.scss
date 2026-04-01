@@ -1,0 +1,269 @@
+// TODO [ITCSS: TRUMPS - UTILITIES]
+// General utility classes
+// Highest specificity layer
+// Use sparingly and only for truly exceptional cases
+
+@import '../settings/variables';
+@import '../settings/breakpoints';
+@import '../tools/mixins';
+
+// ============================================================
+// DISPLAY UTILITIES
+// ============================================================
+// TODO [DISPLAY HELPERS]
+// Show/hide elements
+
+.u-hidden {
+  display: none !important;
+}
+
+.u-visible {
+  display: block !important;
+}
+
+.u-inline {
+  display: inline !important;
+}
+
+.u-inline-block {
+  display: inline-block !important;
+}
+
+// ============================================================
+// VISIBILITY UTILITIES
+// ============================================================
+// TODO [VISIBILITY]
+// Hidden but still in layout (vs display: none)
+
+.u-invisible {
+  visibility: hidden !important;
+}
+
+// ============================================================
+// SCREEN READER ONLY
+// ============================================================
+// TODO [A11Y - SCREEN READERS]
+// Hide from view but keep readable by screen readers
+
+.u-sr-only {
+  @include sr-only;
+}
+
+// ============================================================
+// MARGIN UTILITIES
+// ============================================================
+// TODO [SPACING UTILITIES]
+// Direct margin application
+
+.u-m-0 {
+  margin: 0 !important;
+}
+
+.u-mb-sm {
+  margin-bottom: $spacing-sm !important;
+}
+
+.u-mb-md {
+  margin-bottom: $spacing-md !important;
+}
+
+.u-mb-lg {
+  margin-bottom: $spacing-lg !important;
+}
+
+.u-mt-sm {
+  margin-top: $spacing-sm !important;
+}
+
+.u-mt-md {
+  margin-top: $spacing-md !important;
+}
+
+.u-mt-lg {
+  margin-top: $spacing-lg !important;
+}
+
+// ============================================================
+// PADDING UTILITIES
+// ============================================================
+.u-p-0 {
+  padding: 0 !important;
+}
+
+.u-p-sm {
+  padding: $spacing-sm !important;
+}
+
+.u-p-md {
+  padding: $spacing-md !important;
+}
+
+.u-p-lg {
+  padding: $spacing-lg !important;
+}
+
+// ============================================================
+// TEXT UTILITIES
+// ============================================================
+// TODO [TEXT HELPERS]
+// Common text styling
+
+.u-text-center {
+  text-align: center !important;
+}
+
+.u-text-right {
+  text-align: right !important;
+}
+
+.u-text-left {
+  text-align: left !important;
+}
+
+.u-text-bold {
+  font-weight: $font-weight-bold !important;
+}
+
+.u-text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.u-text-lowercase {
+  text-transform: lowercase !important;
+}
+
+.u-text-capitalize {
+  text-transform: capitalize !important;
+}
+
+.u-text-truncate {
+  @include truncate;
+}
+
+.u-text-nowrap {
+  white-space: nowrap !important;
+}
+
+.u-text-muted {
+  color: $color-text-secondary !important;
+}
+
+.u-text-error {
+  color: $color-danger !important;
+}
+
+.u-text-success {
+  color: $color-success !important;
+}
+
+// ============================================================
+// WIDTH UTILITIES
+// ============================================================
+.u-w-full {
+  width: 100% !important;
+}
+
+.u-w-auto {
+  width: auto !important;
+}
+
+.u-min-w-0 {
+  min-width: 0 !important;
+}
+
+// ============================================================
+// HEIGHT UTILITIES
+// ============================================================
+.u-h-full {
+  height: 100% !important;
+}
+
+.u-h-auto {
+  height: auto !important;
+}
+
+// ============================================================
+// FLEX UTILITIES
+// ============================================================
+.u-flex {
+  display: flex !important;
+}
+
+.u-flex-wrap {
+  flex-wrap: wrap !important;
+}
+
+.u-flex-grow {
+  flex-grow: 1 !important;
+}
+
+// ============================================================
+// CURSOR UTILITIES
+// ============================================================
+.u-cursor-pointer {
+  cursor: pointer !important;
+}
+
+.u-cursor-default {
+  cursor: default !important;
+}
+
+.u-cursor-disabled {
+  cursor: not-allowed !important;
+}
+
+// ============================================================
+// FLOAT UTILITIES
+// ============================================================
+.u-float-left {
+  float: left !important;
+}
+
+.u-float-right {
+  float: right !important;
+}
+
+.u-float-none {
+  float: none !important;
+}
+
+// ============================================================
+// OPACITY UTILITIES
+// ============================================================
+.u-opacity-50 {
+  opacity: 0.5 !important;
+}
+
+.u-opacity-75 {
+  opacity: 0.75 !important;
+}
+
+.u-opacity-0 {
+  opacity: 0 !important;
+}
+
+// ============================================================
+// RESPONSIVE UTILITIES
+// ============================================================
+// TODO [RESPONSIVE DISPLAY]
+// Show/hide at specific breakpoints
+
+@include mq($breakpoint-md) {
+  .u-hidden-md {
+    display: none !important;
+  }
+
+  .u-visible-md {
+    display: block !important;
+  }
+}
+
+@include mq($breakpoint-lg) {
+  .u-hidden-lg {
+    display: none !important;
+  }
+
+  .u-visible-lg {
+    display: block !important;
+  }
+}

@@ -1,0 +1,14 @@
+// TODO [ITCSS: TRUMPS - OVERRIDES]
+// Exceptional override rules
+// HIGHEST SPECIFICITY — use sparingly with !important
+// Only for truly unavoidable exceptions
+
+// Example overrides (empty for now, but demonstrates pattern):
+
+// .legacy-component {
+//   color: red !important; // Override old styling
+// }
+
+// .no-scroll {
+//   overflow: hidden !important;
+// }

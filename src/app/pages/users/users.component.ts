@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { UsersService, User } from '../../services/users.service';
 import { setTimePeriod } from '../../store/filters.actions';
+import { selectTimePeriod } from '../../store/filters.selectors';
 
 @Component({
   selector: 'app-users',
@@ -20,7 +21,24 @@ export class UsersComponent implements OnInit, OnDestroy {
   error = '';
   selectedPeriod = '7d';
 
+  // Pagination
+  currentPage = 1;
+  pageSize = 10;
+
   private usersSub?: Subscription;
+
+  get totalPages(): number {
+    return Math.ceil(this.users.length / this.pageSize);
+  }
+
+  get pages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
+
+  get paginatedUsers(): User[] {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.users.slice(start, start + this.pageSize);
+  }
 
   constructor(
     private usersService: UsersService, 
@@ -29,8 +47,11 @@ export class UsersComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Load initial data immediately
-    this.loadUsers(this.selectedPeriod);
+    // Read the persisted time period from the store, then load users
+    this.store.select(selectTimePeriod).pipe(take(1)).subscribe(period => {
+      this.selectedPeriod = period;
+      this.loadUsers(period);
+    });
   }
 
   private loadUsers(period: string): void {
@@ -54,13 +75,20 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   private getUserCountByPeriod(period: string): number {
-    return { '7d': 8, '30d': 15, '90d': 25 }[period] || 8;
+    return { '7d': 8, '30d': 15, '90d': 25, '1y': 50 }[period] || 8;
   }
 
   onPeriodChange(event: Event): void {
     const period = (event.target as HTMLSelectElement).value;
+    this.currentPage = 1;
     this.loadUsers(period);
     this.store.dispatch(setTimePeriod({ period }));
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
   }
 
   ngOnDestroy(): void {

@@ -49,20 +49,26 @@ export class DashboardComponent implements OnInit {
       '7d': [
         { label: 'Total Users', value: 1240 },
         { label: 'Active Today', value: 312 },
-        { label: 'New This Week', value: 58 },
+        { label: 'New This Year', value: 5640 },
         { label: 'Revenue', value: '$12,400' },
       ],
       '30d': [
         { label: 'Total Users', value: 3150 },
-        { label: 'Active Today', value: 487 },
-        { label: 'New This Month', value: 345 },
+        { label: 'Active Today', value: 312 },
+        { label: 'New This Year', value: 5640 },
         { label: 'Revenue', value: '$48,600' },
       ],
       '90d': [
         { label: 'Total Users', value: 8420 },
-        { label: 'Active Today', value: 1205 },
-        { label: 'New This Quarter', value: 1230 },
+        { label: 'Active Today', value: 312 },
+        { label: 'New This Year', value: 5640 },
         { label: 'Revenue', value: '$127,850' },
+      ],
+      '1y': [
+        { label: 'Total Users', value: 24500 },
+        { label: 'Active Today', value: 312 },
+        { label: 'New This Year', value: 5640 },
+        { label: 'Revenue', value: '$482,300' },
       ],
     };
 

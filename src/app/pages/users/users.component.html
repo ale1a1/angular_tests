@@ -2,9 +2,10 @@
   <div class="header">
     <h2>Users</h2>
     <select [(ngModel)]="selectedPeriod" (change)="onPeriodChange($event)" class="period-selector">
-      <option value="7d">Last 7 Days</option>
-      <option value="30d">Last 30 Days</option>
-      <option value="90d">Last 90 Days</option>
+      <option value="7d">Last 7 days</option>
+      <option value="30d">Last 30 days</option>
+      <option value="90d">Last 90 days</option>
+      <option value="1y">Last year</option>
     </select>
   </div>
   <p class="subtitle">Data fetched from <code>randomuser.me</code> API</p>
@@ -32,7 +33,7 @@
       <tbody>
         <!-- TODO [CONCEPT: @for loop (Angular 17+ replaces *ngFor)]
              track is required — similar to React's key prop for efficient DOM updates -->
-        @for (user of users; track user.email) {
+        @for (user of paginatedUsers; track user.email) {
           <tr>
             <!-- TODO [CONCEPT: Property binding — [src] binds to a TS expression] -->
             <td><img [src]="user.picture" [alt]="user.name" class="avatar" /></td>
@@ -44,5 +45,20 @@
         }
       </tbody>
     </table>
+
+    <!-- Pagination -->
+    @if (totalPages > 1) {
+      <div class="pagination">
+        <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">&laquo; Prev</button>
+        @for (page of pages; track page) {
+          <button
+            (click)="goToPage(page)"
+            [class.active]="page === currentPage">
+            {{ page }}
+          </button>
+        }
+        <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next &raquo;</button>
+      </div>
+    }
   }
 </div>
